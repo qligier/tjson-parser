@@ -1,0 +1,18 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+script:
+  - ./vendor/bin/phpunit

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         syntaxCheck="true"
+         verbose="true">
+    <testsuites>
+        <testsuite name="TJSON">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+        <testsuite name="TJSON Types">
+            <directory suffix="Test.php">./tests/Types/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/Kentin/TJSON</directory>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,0 +1,6 @@
+vendor/
+.php_cs.cache
+.git/
+infection-log.txt
+composer.lock
+.idea/
