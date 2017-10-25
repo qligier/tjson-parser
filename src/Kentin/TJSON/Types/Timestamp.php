@@ -27,12 +27,9 @@ class Timestamp implements ScalarType
             throw new MalformedTjsonException('Invalid Timestamp format');
         }
 
-        $timestamp = DateTime::createFromFormat('Y-m-d\TH:i:sP', $bytes);
-
-        if (false === $timestamp) {
-            throw new MalformedTjsonException('Timestamp format is invalid');
-        }
-
-        return $timestamp;
+        /**
+         * @var DateTime
+         */
+        return DateTime::createFromFormat('Y-m-d\TH:i:sP', $bytes);
     }
 }

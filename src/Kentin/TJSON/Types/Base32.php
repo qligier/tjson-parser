@@ -57,11 +57,9 @@ class Base32 implements ScalarType
         $base32Length = strlen($base32);
         $decodedString = '';
         for ($i = 0; $i < $base32Length; $i = $i + 8) {
-            if ($base32Length - $i >= 2) {
-                $bitGroup1 = self::BASE32_ALPHABET[$base32[$i]];
-                $bitGroup2 = self::BASE32_ALPHABET[$base32[$i + 1]];
-                $decodedString .= chr($bitGroup1 << 3 | $bitGroup2 >> 2);
-            }
+            $bitGroup1 = self::BASE32_ALPHABET[$base32[$i]];
+            $bitGroup2 = self::BASE32_ALPHABET[$base32[$i + 1]];
+            $decodedString .= chr($bitGroup1 << 3 | $bitGroup2 >> 2);
 
             if ($base32Length - $i >= 4) {
                 $bitGroup3 = self::BASE32_ALPHABET[$base32[$i + 2]];

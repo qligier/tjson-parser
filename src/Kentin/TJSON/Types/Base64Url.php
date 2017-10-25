@@ -26,15 +26,7 @@ class Base64Url implements ScalarType
             throw new MalformedTjsonException('Invalid Base64Url format');
         }
 
-        /**
-         * @var string|false
-         */
-        $decodedString = base64_decode($this->translateToBase64($bytes), true);
-        if (false === $decodedString) {
-            throw new MalformedTjsonException('Invalid Base64Url format');
-        }
-
-        return $decodedString;
+        return base64_decode($this->translateToBase64($bytes));
     }
 
     /**

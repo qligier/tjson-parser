@@ -31,21 +31,36 @@ class Base32Test extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testTransformValidStrings()
+    /**
+     * @dataProvider transformValidStringsProvider
+     */
+    public function testTransformValidStrings(string $base32, string $expected)
     {
         $type = new Base32();
 
         $this->assertSame(
-            'Hello, World!',
-            $type->transform('jbswy3dpfqqfo33snrscc'),
+            $expected,
+            $type->transform($base32),
             'It should transform a valid string'
         );
+    }
 
-        $this->assertSame(
-            'Hello, World!',
-            $type->base32Decode('jbswy3dpfqqfo33snrscc'),
-            'It should transform a valid string'
-        );
+    public function transformValidStringsProvider(): array
+    {
+        return [
+            ['jbswy3dpfqqfo33snrscc', 'Hello, World!'],
+            ['mfqwcytcmjrwgy3emrsgkzlfmztgmz3hm4', 'aaabbbcccdddeeefffggg'],
+            ['nbugq2ljnfvgu2tlnnvwy3dmnvww23tonzxw63y', 'hhhiiijjjkkklllmmmnnnooo'],
+            ['na', 'h'],
+            ['pi', 'z'],
+            ['f7', '/'],
+            ['me', 'a'],
+            ['mfqq', 'aa'],
+            ['mfqwc', 'aaa'],
+            ['mfqwcyi', 'aaaa'],
+            ['mfqwcylb', 'aaaaa'],
+            ['mfqwcylbme', 'aaaaaa'],
+        ];
     }
 
     public function testTransformAccents()
@@ -56,37 +71,6 @@ class Base32Test extends \PHPUnit\Framework\TestCase
             'çéàè',
             $type->transform('yot4hkodudb2q'),
             'It should transform accents'
-        );
-    }
-
-    public function testTransformAllAlphabet()
-    {
-        $type = new Base32();
-
-        $this->assertSame(
-            'aaabbbcccdddeeefffggg',
-            $type->transform('mfqwcytcmjrwgy3emrsgkzlfmztgmz3hm4'),
-            'It shoud transform all base32 alphabet'
-        );
-        $this->assertSame(
-            'hhhiiijjjkkklllmmmnnnooo',
-            $type->transform('nbugq2ljnfvgu2tlnnvwy3dmnvww23tonzxw63y'),
-            'It shoud transform all base32 alphabet'
-        );
-        $this->assertSame(
-            'h',
-            $type->transform('na'),
-            'It shoud transform all base32 alphabet'
-        );
-        $this->assertSame(
-            'z',
-            $type->transform('pi'),
-            'It shoud transform all base32 alphabet'
-        );
-        $this->assertSame(
-            '/',
-            $type->transform('f7'),
-            'It shoud transform all base32 alphabet'
         );
     }
 
