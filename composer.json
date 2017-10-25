@@ -1,5 +1,5 @@
 {
-    "name": "qligier/tjson-parser-php",
+    "name": "qligier/tjson-parser",
     "description": "A PHP parser for TJSON format",
     "version": "0.1.0",
     "type": "library",
