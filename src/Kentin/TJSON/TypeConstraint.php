@@ -31,10 +31,7 @@ class TypeConstraint
     public function __construct(string $typeConstraint)
     {
         $groups = [];
-        if (
-            false === preg_match(self::TYPE_REGEX, $typeConstraint, $groups)
-            || empty($groups['type'])
-        ) {
+        if (1 !== preg_match(self::TYPE_REGEX, $typeConstraint, $groups)) {
             throw new MalformedTjsonException('Unknown datatype');
         }
 

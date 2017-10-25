@@ -35,6 +35,12 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
         $this->assertSame(
             'Hello, world!',
+            $type->base16Decode('48656c6c6f2c20776f726c6421'),
+            'It should transform a valid string'
+        );
+
+        $this->assertSame(
+            'Hello, world!',
             $type->transform('48656c6c6f2c20776f726c6421'),
             'It should transform a valid string'
         );
