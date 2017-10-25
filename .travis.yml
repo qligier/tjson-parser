@@ -10,9 +10,9 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - composer self-update
   - composer install --no-interaction
-  - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
   - ./vendor/bin/phpunit
+  - ./vendor/bin/psalm
+  - ./vendor/bin/infection --min-msi=100 --min-covered-msi=100
