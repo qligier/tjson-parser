@@ -31,6 +31,7 @@ class Timestamp implements ScalarType
          * @var DateTime
          */
         $date = DateTime::createFromFormat('Y-m-d\TH:i:sP', $bytes);
+
         return $date;
     }
 }
