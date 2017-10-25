@@ -1,8 +1,1 @@
 preset: recommended
-enabled:
-  - align_double_arrow
-  - align_phpdoc
-  - no_unused_imports
-  - alpha_ordered_imports
-  - blank_line_after_namespace
-  - const_visibility_required
