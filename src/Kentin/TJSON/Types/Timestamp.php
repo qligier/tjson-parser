@@ -1,13 +1,14 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
-use Kentin\TJSON\MalformedTjsonException;
 use DateTime;
+use Kentin\TJSON\MalformedTjsonException;
 
 class Timestamp implements ScalarType
 {
     /**
-     * Regex that match the valid formats of signed integers
+     * Regex that match the valid formats of signed integers.
      *
      * @var string
      */
@@ -16,8 +17,9 @@ class Timestamp implements ScalarType
     /**
      * @param string $bytes
      *
-     * @return DateTime
      * @throws MalformedTjsonException
+     *
+     * @return DateTime
      */
     public function transform(string $bytes): DateTime
     {

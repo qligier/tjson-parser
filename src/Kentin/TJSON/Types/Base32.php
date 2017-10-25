@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 use Kentin\TJSON\MalformedTjsonException;
@@ -6,14 +7,14 @@ use Kentin\TJSON\MalformedTjsonException;
 class Base32 implements ScalarType
 {
     /**
-     * Regex that match the valid formats of base32 strings
+     * Regex that match the valid formats of base32 strings.
      *
      * @var string
      */
     const FORMAT_REGEX = '~[a-z2-7]*$~A';
 
     /**
-     * Lower-case variant of the RFC4648 base32 alphabet
+     * Lower-case variant of the RFC4648 base32 alphabet.
      *
      * @var array<string, int>
      */
@@ -42,7 +43,7 @@ class Base32 implements ScalarType
 
     /**
      * Decode a base32-encoded string
-     * Based on skleeschulte/php-base32
+     * Based on skleeschulte/php-base32.
      *
      * @param string $base32
      *

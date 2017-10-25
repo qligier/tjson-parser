@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 interface ScalarType

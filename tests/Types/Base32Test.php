@@ -1,28 +1,29 @@
 <?php
+
 namespace Kentin\Tests\TJSON\Types;
 
-use Kentin\TJSON\Types\Base32;
 use Kentin\TJSON\MalformedTjsonException;
+use Kentin\TJSON\Types\Base32;
 
 class Base32Test extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->assertInstanceOf(Base32::class, $type, 'It should be initializable');
     }
 
     public function testTransformEmptyString()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->assertSame(
             '',
             $type->transform(''),
             'It should transform an empty string'
         );
-        
+
         $this->assertSame(
             '',
             $type->base32Decode(''),
@@ -32,7 +33,7 @@ class Base32Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformValidStrings()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->assertSame(
             'Hello, World!',
@@ -49,7 +50,7 @@ class Base32Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformAccents()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->assertSame(
             'çéàè',
@@ -60,7 +61,7 @@ class Base32Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformAllAlphabet()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->assertSame(
             'aaabbbcccdddeeefffggg',
@@ -91,7 +92,7 @@ class Base32Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformUppercaseAlphabet()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->expectException(MalformedTjsonException::class);
         $type->transform(
@@ -101,7 +102,7 @@ class Base32Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformInvalidAlphabet()
     {
-        $type = new Base32;
+        $type = new Base32();
 
         $this->expectException(MalformedTjsonException::class);
         $type->transform(

@@ -1,14 +1,14 @@
 <?php
+
 namespace Kentin\Tests\TJSON\Types;
 
 use Kentin\TJSON\Types\UnicodeString;
-use Kentin\TJSON\MalformedTjsonException;
 
 class UnicodeStringTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $type = new UnicodeString;
+        $type = new UnicodeString();
 
         $this->assertInstanceOf(
             UnicodeString::class,
@@ -22,7 +22,7 @@ class UnicodeStringTest extends \PHPUnit\Framework\TestCase
      */
     public function testDecodeUnicodeSequence(string $sequence, string $expected)
     {
-        $type = new UnicodeString;
+        $type = new UnicodeString();
         $this->assertSame(
             $expected,
             $type->decodeUnicodeSequence($sequence),
@@ -46,7 +46,7 @@ class UnicodeStringTest extends \PHPUnit\Framework\TestCase
      */
     public function testDecodeEscapedChar(string $escapedChar, string $expected)
     {
-        $type = new UnicodeString;
+        $type = new UnicodeString();
         $this->assertSame(
             $expected,
             $type->decodeEscapedChar($escapedChar),
@@ -73,7 +73,7 @@ class UnicodeStringTest extends \PHPUnit\Framework\TestCase
      */
     public function testDecodeJsonString(string $jsonString, string $expected)
     {
-        $type = new UnicodeString;
+        $type = new UnicodeString();
         $this->assertSame(
             $expected,
             $type->decodeJsonString($jsonString),
@@ -86,7 +86,7 @@ class UnicodeStringTest extends \PHPUnit\Framework\TestCase
      */
     public function testTransform(string $jsonString, string $expected)
     {
-        $type = new UnicodeString;
+        $type = new UnicodeString();
         $this->assertSame(
             $expected,
             $type->transform('"'.$jsonString.'"'),
@@ -99,7 +99,7 @@ class UnicodeStringTest extends \PHPUnit\Framework\TestCase
         return [
             ['abc', 'abc'],
             ['hello\\tworld\\n', "hello\tworld\n"],
-            ['\\u00e9 \\u4f60 \\u672c', 'é 你 本']
+            ['\\u00e9 \\u4f60 \\u672c', 'é 你 本'],
         ];
     }
 }

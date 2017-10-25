@@ -1,21 +1,21 @@
 <?php
+
 namespace Kentin\Tests\TJSON\Types;
 
 use Kentin\TJSON\Types\FloatingPoint;
-use Kentin\TJSON\MalformedTjsonException;
 
 class FloatingPointTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $type = new FloatingPoint;
+        $type = new FloatingPoint();
 
         $this->assertInstanceOf(FloatingPoint::class, $type, 'It should be initializable');
     }
 
     public function testReturnValue()
     {
-        $type = new FloatingPoint;
+        $type = new FloatingPoint();
 
         $this->assertSame(
             0.1,

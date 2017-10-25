@@ -1,24 +1,25 @@
 <?php
+
 namespace Kentin\TJSON;
 
 class TypeConstraint
 {
     /**
-     * Type fixed by the constraint
+     * Type fixed by the constraint.
      *
      * @var string
      */
     private $typeConstraint = '';
 
     /**
-     * Constraint of the inner type
+     * Constraint of the inner type.
      *
      * @var TypeConstraint|null
      */
     private $innerConstraint = null;
 
     /**
-     * Regex that validates a valid TJSON type
+     * Regex that validates a valid TJSON type.
      *
      * @const TYPE_REGEX
      */
@@ -44,7 +45,7 @@ class TypeConstraint
             }
             $this->typeConstraint = $groups['type'];
             if (!empty($groups['innerType'])) {
-                $this->innerConstraint = new TypeConstraint($groups['innerType']);
+                $this->innerConstraint = new self($groups['innerType']);
             }
         }
         // Others don't
@@ -62,7 +63,7 @@ class TypeConstraint
     }
 
     /**
-     * Get the type specified by the constraint
+     * Get the type specified by the constraint.
      *
      * @return string
      */
@@ -72,7 +73,7 @@ class TypeConstraint
     }
 
     /**
-     * Return the inner TypeConstraint
+     * Return the inner TypeConstraint.
      *
      * @return TypeConstraint|null
      */

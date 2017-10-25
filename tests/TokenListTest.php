@@ -1,9 +1,10 @@
 <?php
+
 namespace Kentin\Tests\TJSON;
 
+use Kentin\TJSON\MalformedTjsonException;
 use Kentin\TJSON\Token;
 use Kentin\TJSON\TokenList;
-use Kentin\TJSON\MalformedTjsonException;
 
 class TokenListTest extends \PHPUnit\Framework\TestCase
 {
@@ -202,7 +203,6 @@ class TokenListTest extends \PHPUnit\Framework\TestCase
         $this->expectException(MalformedTjsonException::class);
         $tokenList->current();
     }
-
 
     public function tokenProvider()
     {

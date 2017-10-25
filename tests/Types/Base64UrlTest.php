@@ -1,21 +1,22 @@
 <?php
+
 namespace Kentin\Tests\TJSON\Types;
 
-use Kentin\TJSON\Types\Base64Url;
 use Kentin\TJSON\MalformedTjsonException;
+use Kentin\TJSON\Types\Base64Url;
 
 class Base64UrlTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $type = new Base64Url;
+        $type = new Base64Url();
 
         $this->assertInstanceOf(Base64Url::class, $type, 'It should be initializable');
     }
 
     public function testTransformEmptyString()
     {
-        $type = new Base64Url;
+        $type = new Base64Url();
 
         $this->assertSame(
             '',
@@ -26,14 +27,14 @@ class Base64UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testTransformValidStrings()
     {
-        $type = new Base64Url;
+        $type = new Base64Url();
 
         $this->assertSame(
             'Hello, World!',
             $type->transform('SGVsbG8sIFdvcmxkIQ'),
             'It should transform a valid string'
         );
-        
+
         $this->assertSame(
             '?)ç/~¢~@¦°~¦°',
             $type->transform('PynDpy9-wqJ-QMKmwrB-wqbCsA'),
@@ -49,7 +50,7 @@ class Base64UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testTransformInvalidAlphabet()
     {
-        $type = new Base64Url;
+        $type = new Base64Url();
 
         $this->expectException(MalformedTjsonException::class);
         $type->transform(
@@ -59,8 +60,8 @@ class Base64UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testTransformBase64()
     {
-        $type = new Base64Url;
-        
+        $type = new Base64Url();
+
         $this->expectException(MalformedTjsonException::class);
         $type->transform(
             'PynDpy9+wqJ+QMKmwrB+wqbCsA'
@@ -69,8 +70,8 @@ class Base64UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testPadding()
     {
-        $type = new Base64Url;
-        
+        $type = new Base64Url();
+
         $this->expectException(MalformedTjsonException::class);
         $type->transform(
             'w6fDqcOgw6g='
@@ -79,7 +80,7 @@ class Base64UrlTest extends \PHPUnit\Framework\TestCase
 
     public function testAlphabetTranslation()
     {
-        $type = new Base64Url;
+        $type = new Base64Url();
 
         $this->assertSame(
             'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/',

@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 use Kentin\TJSON\MalformedTjsonException;
@@ -6,7 +7,7 @@ use Kentin\TJSON\MalformedTjsonException;
 class Base16 implements ScalarType
 {
     /**
-     * Regex that match the valid formats of base16 strings
+     * Regex that match the valid formats of base16 strings.
      *
      * @var string
      */
@@ -15,8 +16,9 @@ class Base16 implements ScalarType
     /**
      * @param string $bytes
      *
-     * @return string
      * @throws MalformedTjsonException
+     *
+     * @return string
      */
     public function transform(string $bytes): string
     {
@@ -28,7 +30,7 @@ class Base16 implements ScalarType
     }
 
     /**
-     * Decode a base16-encoded string
+     * Decode a base16-encoded string.
      *
      * @param string $base16
      *
