@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\Tests\TJSON;
 
 use Kentin\TJSON\LexerFactory;
@@ -9,7 +10,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
         $this->assertInstanceOf(
             \Phlexy\Lexer::class,
             $lexer,
@@ -19,7 +20,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexStrings()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_STRING],
@@ -60,7 +61,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexCurlyBracket()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_LEFT_CURLY_BRACKET],
@@ -77,7 +78,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexSquareBracket()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_LEFT_SQUARE_BRACKET],
@@ -94,7 +95,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexWhitespaces()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_WHITESPACE],
@@ -105,7 +106,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexComma()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_COMMA],
@@ -116,7 +117,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexColon()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_COLON],
@@ -127,7 +128,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexBoolean()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_FALSE],
@@ -144,7 +145,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexNull()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [Tokens::T_JSON_NULL],
@@ -155,21 +156,21 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexUppercaseFalse()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
         $this->expectException(LexingException::class);
         $lexer->lex('FALSE');
     }
 
     public function testLexUppercaseTrue()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
         $this->expectException(LexingException::class);
         $lexer->lex('TRUE');
     }
 
     public function testLexUppercaseNull()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
         $this->expectException(LexingException::class);
         $lexer->lex('NULL');
     }
@@ -179,7 +180,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
      */
     public function testLexNumber(string $number)
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
         $this->assertSameTokens(
             [Tokens::T_JSON_NUMBER],
             $lexer->lex($number),
@@ -190,13 +191,13 @@ class LexerTest extends \PHPUnit\Framework\TestCase
     public function validNumberProvider()
     {
         return [
-            'zero' => ['0'],
-            'negative zero' => ['-0'],
-            'positive number' => ['42'],
-            'negative number' => ['-13'],
-            'number with exponant' => ['-1e+1'],
-            'positive float' => ['0.1'],
-            'negative float' => ['-5.97'],
+            'zero'                         => ['0'],
+            'negative zero'                => ['-0'],
+            'positive number'              => ['42'],
+            'negative number'              => ['-13'],
+            'number with exponant'         => ['-1e+1'],
+            'positive float'               => ['0.1'],
+            'negative float'               => ['-5.97'],
             'positive float with exponant' => ['0.1e2'],
             'negative float with exponant' => ['-5.97e-4'],
         ];
@@ -204,7 +205,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
 
     public function testLexJson()
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         $this->assertSameTokens(
             [
@@ -239,6 +240,7 @@ class LexerTest extends \PHPUnit\Framework\TestCase
         foreach ($fullTokens as $token) {
             $reducedTokens[] = $token[0];
         }
+
         return $reducedTokens;
     }
 }

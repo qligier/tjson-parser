@@ -1,8 +1,9 @@
 <?php
+
 namespace Kentin\Tests\TJSON;
 
-use Kentin\TJSON\TypeConstraint;
 use Kentin\TJSON\MalformedTjsonException;
+use Kentin\TJSON\TypeConstraint;
 
 class TypeConstraintTest extends \PHPUnit\Framework\TestCase
 {

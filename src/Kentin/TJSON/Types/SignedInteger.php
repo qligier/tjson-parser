@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 use Kentin\TJSON\MalformedTjsonException;
@@ -6,21 +7,21 @@ use Kentin\TJSON\MalformedTjsonException;
 class SignedInteger implements ScalarType
 {
     /**
-     * Regex that match the valid formats of signed integers
+     * Regex that match the valid formats of signed integers.
      *
      * @var string
      */
     const FORMAT_REGEX = '~-?(?:0|[1-9]\d*)(?:[eE][+-]?\d+)?$~A';
 
     /**
-     * Smallest valid signed integer per TJSON spec
+     * Smallest valid signed integer per TJSON spec.
      *
      * @var string
      */
     const MIN_INTEGER = '-9223372036854775808';
 
     /**
-     * Biggest valid signed integer per TJSON spec
+     * Biggest valid signed integer per TJSON spec.
      *
      * @var string
      */
@@ -29,8 +30,9 @@ class SignedInteger implements ScalarType
     /**
      * @param string $bytes
      *
-     * @return \GMP
      * @throws MalformedTjsonException
+     *
+     * @return \GMP
      */
     public function transform(string $bytes): \GMP
     {

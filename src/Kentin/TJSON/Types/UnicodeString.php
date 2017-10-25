@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 use Kentin\TJSON\MalformedTjsonException;
@@ -6,7 +7,7 @@ use Kentin\TJSON\MalformedTjsonException;
 class UnicodeString implements ScalarType
 {
     /**
-     * Decode the string token literal value
+     * Decode the string token literal value.
      *
      * @param string $bytes
      *
@@ -21,12 +22,13 @@ class UnicodeString implements ScalarType
     }
 
     /**
-     * Decode a JSON-encoded string
+     * Decode a JSON-encoded string.
      *
      * @param string $jsonString
      *
-     * @return string
      * @throws MalformedTjsonException
+     *
+     * @return string
      */
     public function decodeJsonString(string $jsonString): string
     {
@@ -35,19 +37,19 @@ class UnicodeString implements ScalarType
         $length = count($chars);
         for ($i = 0; $i < $length; ++$i) {
             if ('\\' === $chars[$i]) {
-                if ('u' === $chars[$i+1]) {
+                if ('u' === $chars[$i + 1]) {
                     if ($length - $i < 6) {
                         throw new MalformedTjsonException('Invalid UnicodeString format');
                     }
                     $chars[$i] = $this->decodeUnicodeSequence(
-                        $chars[$i+2].$chars[$i+3].$chars[$i+4].$chars[$i+5]
+                        $chars[$i + 2].$chars[$i + 3].$chars[$i + 4].$chars[$i + 5]
                     );
-                    array_splice($chars, $i+1, 5);
+                    array_splice($chars, $i + 1, 5);
                     $length = $length - 5;
                     continue;
                 } else {
-                    $chars[$i] = $this->decodeEscapedChar($chars[$i+1]);
-                    array_splice($chars, $i+1, 1);
+                    $chars[$i] = $this->decodeEscapedChar($chars[$i + 1]);
+                    array_splice($chars, $i + 1, 1);
                     --$length;
                     continue;
                 }
@@ -58,7 +60,7 @@ class UnicodeString implements ScalarType
     }
 
     /**
-     * Decode an unicode sequence
+     * Decode an unicode sequence.
      *
      * @param string $unicodeSequence
      *
@@ -70,12 +72,13 @@ class UnicodeString implements ScalarType
     }
 
     /**
-     * Decode a JSON escaped char
+     * Decode a JSON escaped char.
      *
      * @param string $escapedChar
      *
-     * @return string
      * @throws MalformedTjsonException
+     *
+     * @return string
      */
     public function decodeEscapedChar(string $escapedChar): string
     {

@@ -1,24 +1,25 @@
 <?php
+
 namespace Kentin\TJSON;
 
 class TokenList implements \Iterator, \ArrayAccess
 {
     /**
-     * List of tokens
+     * List of tokens.
      *
      * @var Token[]
      */
     private $tokens = [];
 
     /**
-     * Length of the token array
+     * Length of the token array.
      *
      * @var int
      */
     private $length = 0;
 
     /**
-     * Current position of the iterator
+     * Current position of the iterator.
      *
      * @var int
      */
@@ -35,7 +36,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Return the current token
+     * Return the current token.
      *
      * @return Token
      */
@@ -44,11 +45,12 @@ class TokenList implements \Iterator, \ArrayAccess
         if (!$this->valid()) {
             throw new MalformedTjsonException('Unexpected end of TJSON');
         }
+
         return $this->tokens[$this->position];
     }
 
     /**
-     * Return the key of the current token
+     * Return the key of the current token.
      *
      * @return int
      */
@@ -58,7 +60,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Move forward to next token
+     * Move forward to next token.
      */
     public function next()
     {
@@ -66,7 +68,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Rewind the Iterator to the first token
+     * Rewind the Iterator to the first token.
      */
     public function rewind()
     {
@@ -74,7 +76,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Checks if current position is valid
+     * Checks if current position is valid.
      *
      * @return bool
      */
@@ -84,7 +86,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Return whether an offset exists
+     * Return whether an offset exists.
      */
     public function offsetExists($offset)
     {
@@ -92,9 +94,10 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Returns the token at specified offset
+     * Returns the token at specified offset.
      *
      * @param int $offset
+     *
      * @return Token|null
      */
     public function offsetGet($offset)
@@ -102,13 +105,12 @@ class TokenList implements \Iterator, \ArrayAccess
         if ($this->offsetExists($offset)) {
             return $this->tokens[$offset];
         }
-        return null;
     }
 
     /**
-     * Assign a token to the specified offset
+     * Assign a token to the specified offset.
      *
-     * @param int $offset
+     * @param int   $offset
      * @param Token $token
      */
     public function offsetSet($offset, $token)
@@ -117,7 +119,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Unset an offset
+     * Unset an offset.
      *
      * @param int $offset
      */
@@ -128,7 +130,7 @@ class TokenList implements \Iterator, \ArrayAccess
     }
 
     /**
-     * Return the token list
+     * Return the token list.
      *
      * @return Token[]
      */

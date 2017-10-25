@@ -1,14 +1,15 @@
 <?php
+
 namespace Kentin\Tests\TJSON\Types;
 
-use Kentin\TJSON\Types\Base16;
 use Kentin\TJSON\MalformedTjsonException;
+use Kentin\TJSON\Types\Base16;
 
 class Base16Test extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->assertInstanceOf(
             Base16::class,
@@ -19,7 +20,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformEmptyString()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->assertSame(
             '',
@@ -30,7 +31,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformValidStrings()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->assertSame(
             'Hello, world!',
@@ -41,7 +42,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformAccents()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->assertSame(
             'çéàè',
@@ -52,7 +53,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformAllAlphabet()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->assertSame(
             'ABCDEFGHIJKLMNOP',
@@ -63,7 +64,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformUppercaseAlphabet()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->expectException(MalformedTjsonException::class);
         $type->transform(
@@ -73,7 +74,7 @@ class Base16Test extends \PHPUnit\Framework\TestCase
 
     public function testTransformInvalidAlphabet()
     {
-        $type = new Base16;
+        $type = new Base16();
 
         $this->expectException(MalformedTjsonException::class);
         $type->transform(

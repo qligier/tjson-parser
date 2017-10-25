@@ -1,16 +1,17 @@
 <?php
+
 namespace Kentin\Tests\TJSON;
 
-use Kentin\TJSON\Parser;
-use Kentin\TJSON\MalformedTjsonException;
 use DateTime;
 use GMP;
+use Kentin\TJSON\MalformedTjsonException;
+use Kentin\TJSON\Parser;
 
 class ParserTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreate()
     {
-        $parser = new Parser;
+        $parser = new Parser();
         $this->assertInstanceOf(
             Parser::class,
             $parser,
@@ -23,7 +24,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      */
     public function testInvalidTjson(string $invalidTjson)
     {
-        $parser = new Parser;
+        $parser = new Parser();
 
         $this->expectException(MalformedTjsonException::class);
         $parser->parse($invalidTjson);
@@ -59,7 +60,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      */
     public function testValidTjson(string $validTjson)
     {
-        $parser = new Parser;
+        $parser = new Parser();
         $this->assertInternalType(
             'array',
             $parser->parse($validTjson)
@@ -88,7 +89,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      */
     public function testOutputValidTjson(string $validTjson, array $expected)
     {
-        $parser = new Parser;
+        $parser = new Parser();
         $this->assertEquals(
             $expected,
             $parser->parse($validTjson)
@@ -114,12 +115,12 @@ class ParserTest extends \PHPUnit\Framework\TestCase
         $expected1 = [
             'array-example' => [
                 [
-                    'string-example' => 'foobar',
+                    'string-example'      => 'foobar',
                     'binary-data-example' => 'BINARY',
-                    'float-example' => 0.42,
-                    'int-example' => new GMP('42'),
-                    'timestamp-example' => new DateTime('2016-11-06T22:27:34Z'),
-                    'boolean-example' => true,
+                    'float-example'       => 0.42,
+                    'int-example'         => new GMP('42'),
+                    'timestamp-example'   => new DateTime('2016-11-06T22:27:34Z'),
+                    'boolean-example'     => true,
                 ],
             ],
             'set-example' => [

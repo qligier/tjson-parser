@@ -1,35 +1,33 @@
 <?php
+
 namespace Kentin\TJSON;
 
-use Phlexy\LexingException;
 use Exception;
+use Phlexy\LexingException;
 
 class Parser
 {
     /**
-     * List of tokens
+     * List of tokens.
      *
      * @var TokenList
      */
     private $tokenList;
 
     /**
-     * Version of TJSON-parser
+     * Version of TJSON-parser.
      *
      * @var string
      */
     const VERSION = '0.1.0';
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->tokenList = new TokenList([]);
     }
 
     /**
-     * Parse a TJSON string
+     * Parse a TJSON string.
      *
      * @param string $tjsonString
      *
@@ -37,7 +35,7 @@ class Parser
      */
     public function parse(string $tjsonString): array
     {
-        $lexer = (new LexerFactory)->createLexer();
+        $lexer = (new LexerFactory())->createLexer();
 
         try {
             $tokensArray = $lexer->lex($tjsonString);
@@ -71,8 +69,9 @@ class Parser
     }
 
     /**
-     * @return array<string, string|\GMP|bool|\DateTime|float|array>
      * @throws MalformedTjsonException
+     *
+     * @return array<string, string|\GMP|bool|\DateTime|float|array>
      */
     private function consumeObject(): array
     {
@@ -137,8 +136,9 @@ class Parser
     /**
      * @param TypeConstraint|null $constraint
      *
-     * @return array<string|\GMP|bool|\DateTime|float|array>
      * @throws MalformedTjsonException
+     *
+     * @return array<string|\GMP|bool|\DateTime|float|array>
      */
     private function consumeArray(TypeConstraint $constraint = null): array
     {
@@ -181,8 +181,9 @@ class Parser
     /**
      * @param TypeConstraint|null $constraint
      *
-     * @return array<string|\GMP|bool|\DateTime|float|array>
      * @throws MalformedTjsonException
+     *
+     * @return array<string|\GMP|bool|\DateTime|float|array>
      */
     private function consumeSet(TypeConstraint $constraint = null): array
     {
@@ -230,7 +231,8 @@ class Parser
      */
     private function consumeSignedInteger(): \GMP
     {
-        $signedInteger = new Types\SignedInteger;
+        $signedInteger = new Types\SignedInteger();
+
         return $signedInteger->transform($this->consumeString());
     }
 
@@ -239,7 +241,8 @@ class Parser
      */
     private function consumeUnsignedInteger(): \GMP
     {
-        $unsignedInteger = new Types\UnsignedInteger;
+        $unsignedInteger = new Types\UnsignedInteger();
+
         return $unsignedInteger->transform($this->consumeString());
     }
 
@@ -252,9 +255,10 @@ class Parser
             throw new MalformedTjsonException('Expected FloatingPoint');
         }
 
-        $floatingPoint = new Types\FloatingPoint;
+        $floatingPoint = new Types\FloatingPoint();
         $value = $floatingPoint->transform($this->tokenList->current()->getValue());
         $this->tokenList->next();
+
         return $value;
     }
 
@@ -267,9 +271,10 @@ class Parser
             throw new MalformedTjsonException('Expected UnicodeString');
         }
 
-        $unicodeString = new Types\UnicodeString;
+        $unicodeString = new Types\UnicodeString();
         $value = $unicodeString->transform($this->tokenList->current()->getValue());
         $this->tokenList->next();
+
         return $value;
     }
 
@@ -278,7 +283,8 @@ class Parser
      */
     private function consumeTimestamp(): \DateTime
     {
-        $timestamp = new Types\Timestamp;
+        $timestamp = new Types\Timestamp();
+
         return $timestamp->transform($this->consumeString());
     }
 
@@ -294,9 +300,10 @@ class Parser
             throw new MalformedTjsonException('Expected Boolean');
         }
 
-        $boolean = new Types\Boolean;
+        $boolean = new Types\Boolean();
         $value = $boolean->transform($this->tokenList->current()->getValue());
         $this->tokenList->next();
+
         return $value;
     }
 
@@ -305,7 +312,8 @@ class Parser
      */
     private function consumeBase16(): string
     {
-        $base16 = new Types\Base16;
+        $base16 = new Types\Base16();
+
         return $base16->transform($this->consumeString());
     }
 
@@ -314,7 +322,8 @@ class Parser
      */
     private function consumeBase32(): string
     {
-        $base32 = new Types\Base32;
+        $base32 = new Types\Base32();
+
         return $base32->transform($this->consumeString());
     }
 
@@ -323,15 +332,17 @@ class Parser
      */
     private function consumeBase64Url(): string
     {
-        $base64Url = new Types\Base64Url;
+        $base64Url = new Types\Base64Url();
+
         return $base64Url->transform($this->consumeString());
     }
 
     /**
      * @param TypeConstraint $constraint
      *
-     * @return string|\GMP|bool|\DateTime|float|array
      * @throws Exception If the type constraint is invalid
+     *
+     * @return string|\GMP|bool|\DateTime|float|array
      */
     private function consumeByConstraint(TypeConstraint $constraint)
     {

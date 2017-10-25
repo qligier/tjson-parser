@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 use Kentin\TJSON\MalformedTjsonException;
@@ -6,7 +7,7 @@ use Kentin\TJSON\MalformedTjsonException;
 class Base64Url implements ScalarType
 {
     /**
-     * Regex that match the valid formats of base64url-encoded strings
+     * Regex that match the valid formats of base64url-encoded strings.
      *
      * @var string
      */
@@ -15,8 +16,9 @@ class Base64Url implements ScalarType
     /**
      * @param string $bytes
      *
-     * @return string
      * @throws MalformedTjsonException If $bytes is an invalid base64Url string
+     *
+     * @return string
      */
     public function transform(string $bytes): string
     {
@@ -36,7 +38,7 @@ class Base64Url implements ScalarType
     }
 
     /**
-     * Translate a base64url-encoded string to base64
+     * Translate a base64url-encoded string to base64.
      *
      * @param string $base64url
      *

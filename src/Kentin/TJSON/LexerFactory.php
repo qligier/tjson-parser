@@ -1,17 +1,18 @@
 <?php
+
 namespace Kentin\TJSON;
 
 class LexerFactory
 {
     /**
-     * Create a JSON lexer
+     * Create a JSON lexer.
      *
      * @return \Phlexy\Lexer
      */
     public function createLexer(): \Phlexy\Lexer
     {
         $factory = new \Phlexy\LexerFactory\Stateless\UsingPregReplace(
-            new \Phlexy\LexerDataGenerator
+            new \Phlexy\LexerDataGenerator()
         );
 
         return $factory->createLexer([

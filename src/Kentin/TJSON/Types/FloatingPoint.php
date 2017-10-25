@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\TJSON\Types;
 
 class FloatingPoint implements ScalarType
@@ -10,6 +11,6 @@ class FloatingPoint implements ScalarType
      */
     public function transform(string $bytes): float
     {
-        return (float)$bytes;
+        return (float) $bytes;
     }
 }

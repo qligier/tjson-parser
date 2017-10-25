@@ -1,87 +1,88 @@
 <?php
+
 namespace Kentin\TJSON;
 
 class Tokens
 {
     /**
-     * JSON left curly bracket
+     * JSON left curly bracket.
      *
      * @var string
      */
     const T_JSON_LEFT_CURLY_BRACKET = 'T_JSON_LEFT_CURLY_BRACKET';
 
     /**
-     * JSON right curly bracket
+     * JSON right curly bracket.
      *
      * @var string
      */
     const T_JSON_RIGHT_CURLY_BRACKET = 'T_JSON_RIGHT_CURLY_BRACKET';
 
     /**
-     * JSON left square bracket
+     * JSON left square bracket.
      *
      * @var string
      */
     const T_JSON_LEFT_SQUARE_BRACKET = 'T_JSON_LEFT_SQUARE_BRACKET';
 
     /**
-     * JSON right square bracket
+     * JSON right square bracket.
      *
      * @var string
      */
     const T_JSON_RIGHT_SQUARE_BRACKET = 'T_JSON_RIGHT_SQUARE_BRACKET';
 
     /**
-     * JSON whitespace
+     * JSON whitespace.
      *
      * @var string
      */
     const T_JSON_WHITESPACE = 'T_JSON_WHITESPACE';
 
     /**
-     * JSON colon
+     * JSON colon.
      *
      * @var string
      */
     const T_JSON_COLON = 'T_JSON_COLON';
 
     /**
-     * JSON comma
+     * JSON comma.
      *
      * @var string
      */
     const T_JSON_COMMA = 'T_JSON_COMMA';
 
     /**
-     * JSON true
+     * JSON true.
      *
      * @var string
      */
     const T_JSON_TRUE = 'T_JSON_TRUE';
 
     /**
-     * JSON false
+     * JSON false.
      *
      * @var string
      */
     const T_JSON_FALSE = 'T_JSON_FALSE';
 
     /**
-     * JSON null
+     * JSON null.
      *
      * @var string
      */
     const T_JSON_NULL = 'T_JSON_NULL';
 
     /**
-     * JSON string
+     * JSON string.
      *
      * @var string
      */
     const T_JSON_STRING = 'T_JSON_STRING';
 
     /**
-     * JSON number
+     * JSON number.
      *
      * @var string
      */

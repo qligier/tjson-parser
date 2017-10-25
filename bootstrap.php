@@ -5,7 +5,7 @@ spl_autoload_register(function ($class) {
     $prefix = 'Kentin\\';
 
     // base directory for the namespace prefix
-    $base_dir = __DIR__ . '/src/Kentin/';
+    $base_dir = __DIR__.'/src/Kentin/';
 
     // does the class use the namespace prefix?
     $len = strlen($prefix);
@@ -20,7 +20,7 @@ spl_autoload_register(function ($class) {
     // replace the namespace prefix with the base directory, replace namespace
     // separators with directory separators in the relative class name, append
     // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    $file = $base_dir.str_replace('\\', '/', $relative_class).'.php';
 
     // if the file exists, require it
     if (file_exists($file)) {

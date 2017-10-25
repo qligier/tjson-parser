@@ -1,4 +1,5 @@
 <?php
+
 namespace Kentin\Tests\TJSON;
 
 use Kentin\TJSON\Token;
