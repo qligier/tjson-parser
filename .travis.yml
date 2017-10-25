@@ -15,4 +15,4 @@ before_script:
 script:
   - ./vendor/bin/phpunit
   - ./vendor/bin/psalm
-  - ./vendor/bin/infection --min-msi=100 --min-covered-msi=100
+  - ./vendor/bin/infection --min-msi=90 --min-covered-msi=90
