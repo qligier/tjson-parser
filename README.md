@@ -22,6 +22,19 @@ Install the library with [composer](https://getcomposer.org):
 
 ### Usage
 
+```php
+$parser = new Kentin\TJSON\Parser;
+$tjson = '{"message:u":"Hello World!"}';
+
+var_dump($parser->parse($tjson));
+/*
+array(1) {
+  'message' =>
+  string(12) "Hello World!"
+}
+*/
+```
+
 ### Data mapping
 
 - _Boolean_ values are returned as boolean;
