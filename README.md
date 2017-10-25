@@ -2,10 +2,10 @@
 
 **A TJSON parser written in PHP, using [Phlexy](https://github.com/nikic/Phlexy) as JSON lexer.**
 
-<a href="https://github.com/qligier/tjson-parser" alt="GitHub release"><img src="https://img.shields.io/github/release/qligier/tjson-parser.svg" /></a>
-<a href="https://travis-ci.org/qligier/tjson-parser" alt="Build Status"><img src="https://travis-ci.org/qligier/tjson-parser.svg" /></a>
+<a href="https://github.com/qligier/tjson-parser" alt="GitHub release"><img src="https://img.shields.io/github/release/qligier/tjson-parser.svg?style=flat-square" /></a>
+<a href="https://travis-ci.org/qligier/tjson-parser" alt="Build Status"><img src="https://img.shields.io/travis/qligier/tjson-parser.svg?style=flat-square" /></a>
 <a href="https://styleci.io/repos/108248905" alt="StyleCI Shield"><img src="https://styleci.io/repos/108248905/shield?branch=master" alt="StyleCI Shield"></a>
-<a href="https://www.gnu.org/licenses/gpl-3.0" alt="License: GPL v3" <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" /></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0" alt="License: GPL v3"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square" /></a>
 
 ## Requirements
 
