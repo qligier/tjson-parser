@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Kentin\\": "src/"
+            "Kentin\\": "src/Kentin/"
         }
     },
     "scripts": {
