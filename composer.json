@@ -1,7 +1,6 @@
 {
     "name": "qligier/tjson-parser",
     "description": "A PHP parser for TJSON format",
-    "version": "0.1.0",
     "type": "library",
     "license": "GPL-3.0",
     "authors": [
